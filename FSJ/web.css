@@ -1,0 +1,8 @@
+body {
+    background: url('web.jpeg') no-repeat center center fixed; /* Add this line */
+    background-size: cover; /* Add this line */
+    font-family: 'Arial', sans-serif;
+    color: #ecf0f1;
+    margin: 0;
+    padding: 0;
+}

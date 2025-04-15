@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LearnHub - Sign In / Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            max-width: 500px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+        .form-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #34495e;
+        }
+        .form-group label {
+            font-weight: 500;
+            color: #34495e;
+        }
+        .form-group input {
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1rem;
+            width: 100%;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        .btn-custom {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .btn-custom:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 17px rgba(0, 0, 0, 0.2);
+        }
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: #3498db;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .toggle-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2 class="form-title" id="formTitle">Sign In</h2>
+
+        <form id="authForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group" id="nameField" style="display: none;">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-custom" id="submitButton">Sign In</button>
+        </form>
+
+        <button class="toggle-btn" id="toggleAuth">Don't have an account? Sign Up</button>
+    </div>
+
+    <script>
+        const authForm = document.getElementById("authForm");
+        const formTitle = document.getElementById("formTitle");
+        const submitButton = document.getElementById("submitButton");
+        const nameField = document.getElementById("nameField");
+        const toggleAuth = document.getElementById("toggleAuth");
+
+        let isSignUp = false;
+
+        // Toggle Sign Up / Sign In
+        toggleAuth.addEventListener("click", () => {
+            isSignUp = !isSignUp;
+            formTitle.innerText = isSignUp ? "Sign Up" : "Sign In";
+            submitButton.innerText = isSignUp ? "Sign Up" : "Sign In";
+            toggleAuth.innerText = isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up";
+            nameField.style.display = isSignUp ? "block" : "none";
+        });
+
+        // Handle Form Submission
+        authForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const name = document.getElementById("name") ? document.getElementById("name").value.trim() : "";
+
+    if (!email || !password || (isSignUp && !name)) {
+        alert("All fields are required!");
+        return;
+    }
+
+    let url = isSignUp ? "http://localhost:8080/auth/signup" : "http://localhost:8080/auth/signin";
+    let data = isSignUp ? { name, email, password } : { email, password };
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            window.location.href = result.redirectUrl; 
+        } else {
+            alert(result.message); 
+        }
+    } catch (error) {
+        alert("Error connecting to server.");
+    }
+});
+
+    </script>
+
+</body>
+</html>

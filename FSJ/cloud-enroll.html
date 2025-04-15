@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LearnHub - Introduction to MS Excel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('cloud.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Arial', sans-serif;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg-custom-gray {
+            background-color: #2c3e50;
+        }
+
+        .btn-sky-blue {
+            background-color: #3498db;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sky-blue:hover {
+            background-color: #2980b9;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 17px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card {
+            background-color: rgba(0, 0, 0, 0.649);
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .course-card .card-body {
+            padding: 2rem;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            fill-opacity: 80%;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 15px;
+            }
+        }
+
+        /* Move Sign Up button to the top-left */
+        .btn-signup {
+            position: absolute;
+            top: 15px;
+            left: 1415px;
+            z-index: 9999;
+        }
+
+        .navbar {
+            position: relative;
+        }
+    </style>
+</head>
+<body >
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-custom-gray navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>LearnHub
+            </a>
+        </div>
+        <!-- Sign Up Button that links to the sign-up page -->
+        <a onclick="window.location.href='index(duplicate).html';" class="btn btn-sky-blue btn-signup">Back</a>
+    </nav>
+
+    <!-- Course Enrollment Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="card course-card text-white">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4">Cloud Computing</h1>
+                            <br><br>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-danger fw-bold">Paid: ₹899</span>
+                                <span class="text-info">6 Weeks</span>
+                            </div>
+                            <p class="card-text mb-4"></p>
+                            <div class="d-flex justify-content-center mb-4">
+                                <a href="payment.html" class="btn btn-sky-blue btn-lg">Start Learning</a>
+                            </div>
+                            <h3 class="mb-3">Course Overview</h3>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check-circle text-success me-2"></i> 6 week of self-paced video lessons</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Completion certificate awarded on course completion</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i> 90 days access to your free course</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Beginner course level</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+
+    <!-- Footer -->
+    <footer class="bg-custom-gray text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 LearnHub. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

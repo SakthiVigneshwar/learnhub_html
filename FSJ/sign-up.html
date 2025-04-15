@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up - LearnHub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color: #34495e;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 80px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #34495e;
+        }
+        .form-title1 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0; /* Reduce the margin to minimize space */
+            font-weight: 700;
+            color: #34495e;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #34495e;
+        }
+
+        .form-group input {
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .btn-sky-blue {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .btn-sky-blue1 {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn-sky-blue:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 17px rgba(0, 0, 0, 0.2);
+        }
+
+        .password-error {
+            color: red;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        footer {
+            background-color: #34495e;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 25px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-graduation-cap me-2"></i>LearnHub
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sign Up Form -->
+    <div class="form-container">
+        <h2 class="form-title">Create Your Account</h2>
+        <form id="signUpForm" action="signup_success.html" method="post">
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <!-- Confirm Password Field -->
+           
+         <br>
+            <!-- Submit Button -->
+            <a onclick="window.location.href='Success.html';" class="btn btn-sky-blue btn-signup">Sign Up</a>
+         <br>
+         <p class="form-title1">(or)</p>
+         <a onclick="window.location.href='sign-in.html';" class="btn btn-sky-blue btn-signIn">Sign In</a>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 LearnHub. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Password Validation -->
+    <script>
+        const form = document.getElementById("signUpForm");
+        const passwordField = document.getElementById("password");
+        const confirmPasswordField = document.getElementById("confirm-password");
+        const passwordError = document.getElementById("passwordError");
+
+        form.addEventListener("submit", function(event) {
+            if (passwordField.value !== confirmPasswordField.value) {
+                event.preventDefault(); // Prevent form submission
+                passwordError.style.display = "block"; // Show error message
+            }
+        });
+    </script>
+</body>
+</html>
